@@ -1,0 +1,52 @@
+/*	XOP-specific resources for SetWindowExt on Windows
+
+	This file is compiled by the resource compiler and creates XOP-specific
+	resources that IGOR looks for in an XOP module.
+*/
+
+#include "XOPResources.h"			// Defines XOP-specific symbols.
+
+1100 STR#					// Custom error messages.
+BEGIN
+	"Input string is non-existent.\0",
+	"Input string is too long.\0",
+
+	// You can add error messages here.
+	
+	0,								// NOTE: 0 required to terminate the resource.
+END
+
+1100 XOPI							// XOPI - Describes general XOP properties to IGOR. 
+BEGIN
+	XOP_VERSION,					// Version number of host XOP system.
+	DEV_SYS_CODE,					// Code for development system used to make XOP
+	0,								// True if XOP requires hierarchical menus
+	1,								// True if XOP requires math coprocessor
+	0								// True if XOP requires MMU
+END
+
+1100 XOPC							// Describes operations that the XOP adds to IGOR.
+BEGIN
+	"SetWindowExt\0",
+	displayOp | XOPOp | graphOp | tableOp | layoutOp | allWinOp,
+	"\0"							// NOTE: NULL required to terminate the resource.
+END
+
+1100 XOPF							// Describes functions that the XOP adds to IGOR.
+BEGIN
+	"SetProcedureText\0",
+	F_UTIL | F_WINDOWS | F_EXTERNAL,
+	NT_FP64,
+	HSTRING_TYPE,
+	HSTRING_TYPE,
+	NT_FP64,
+	0,
+
+	"DoRecreationDialog\0",
+	F_UTIL | F_WINDOWS | F_EXTERNAL,
+	NT_FP64,
+	HSTRING_TYPE, 0
+	0,
+
+	0,
+END
